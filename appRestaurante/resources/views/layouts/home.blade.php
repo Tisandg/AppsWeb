@@ -1,166 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
-
-    <head>
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>App Restaurante</title>
-
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600">        
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/animate.css">
-		<link rel="stylesheet" href="assets/css/form-elements.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/media-queries.css">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.png">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-
-    </head>
-
-    <body>
+<html lang="{{ app()->getLocale() }}">
+  <head>
     
-        <!-- Loader -->
-    	<div class="loader">
-    		<div class="loader-img"></div>
-    	</div>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<!-- Top menu -->
-		<nav class="navbar navbar-inverse navbar-fixed-top navbar-no-bg" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="top-navbar-1">
-					<ul class="nav navbar-nav right">
-						<li><a class="scroll-link" href="#top-content">Iniciar sesion</a></li>
-						<li><a class="scroll-link" href="#services">Registrarse</a></li>
-					</ul>
-					<div class="navbar-text navbar-right">
-						<a href="#">Iniciar sesion</a>
-						<a href="#">Registrarse</a>
-					</div>
-				</div>
-			</div>
-		</nav>
+    <meta charset="utf-8">
+    <title>AppRestaurante</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <!-- Top content -->
-        <div class="top-content">
-        	
-            <div class="inner-bg">
-                <div class="container">
-                	
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                        	<div class="logo wow fadeInDown">
-                        		<a href="index.html"></a>
-                        	</div>
-                            <h1 class="wow fadeInLeftBig">Sistema de gestion de restaurantes</h1>
-                            <div class="description wow fadeInLeftBig">
-                            	<p>
-	                            	@yield ('content')
-                            	</p>
-                            </div>
-                            <div class="top-big-link wow fadeInUp">
-                            	<a class="btn btn-link-1" href="">Iniciar sesion</a>
-                            	<a class="btn btn-link-2 scroll-link" href="">Registrarse</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            
+    {{ Html::style('bootstrap.css') }}
+    {{ Html::style('assets/css/custom.min.css') }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    @yield('head')
+  </head>
+  <body>
+
+    <!-- Barra Superior-->
+    <div class="navbar navbar-default navbar-fixed-top">
+
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{{ url('/') }}">
+              App Restaurante
+          </a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
         </div>
-        
-       
-        <!-- Footer -->
-        <footer class="footer-container">
-	        <div class="container">
-	        	<div class="row">
-	        		
-                    <div class="col-sm-6 footer-left">
-                    	<h3>Contact us</h3>
-                    	<div class="contact-form">
-                    		<form role="form" action="assets/contact.php" method="post">
-		                    	<div class="form-group">
-		                    		<label class="sr-only" for="contact-email">Email</label>
-		                        	<input type="text" name="email" placeholder="Email..." class="contact-email form-control" id="contact-email">
-		                        </div>
-		                        <div class="form-group">
-		                        	<label class="sr-only" for="contact-subject">Subject</label>
-		                        	<input type="text" name="subject" placeholder="Subject..." class="contact-subject form-control" id="contact-subject">
-		                        </div>
-		                        <div class="form-group">
-		                        	<label class="sr-only" for="contact-message">Message</label>
-		                        	<textarea name="message" placeholder="Message..." class="contact-message form-control" id="contact-message"></textarea>
-		                        </div>
-		                        <button type="submit" class="btn">Send message</button>
-		                    </form>
-                    	</div>
-                    </div>
+
+        <div class="collapse navbar-collapse" id="navbar-main">
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-nav">
+                &nbsp;
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="nav navbar-nav navbar-right">
+                <!-- Authentication Links -->
+
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}">Ingresar</a></li>
+                    <li><a href="{{ route('register') }}">Registrarse</a></li>
+                @else
                     
-                    <div class="col-sm-5 col-sm-offset-1 footer-right">
-                    	<h3>Follow us</h3>
-                    	<div class="footer-social">
-                    		<a href="#"><i class="fa fa-facebook"></i></a>
-	                    	<a href="#"><i class="fa fa-dribbble"></i></a>
-	                    	<a href="#"><i class="fa fa-twitter"></i></a>
-	                    	<a href="#"><i class="fa fa-instagram"></i></a>
-	                    	<a href="#"><i class="fa fa-pinterest"></i></a>
-                    	</div>
-                    	<div class="footer-copyright">
-                    		&copy; Maren One Page Bootstrap Template <br>Download it for free on <a href="http://azmind.com">AZMIND</a>
-                    	</div>
-                    </div>
-                    
-                </div>
-	        </div>
-	        
-	        <div class="container-fluid">
-	        	<div class="row">
-                	<div class="col-sm-12 footer-bottom">
-                		<a class="scroll-link" href="#top-content"><i class="fa fa-chevron-up"></i></a>
-                	</div>
-                </div>
-	        </div>
-        </footer>
+                    @if(!is_null(Auth::user()->profile))
 
+                      @if( strcmp(Auth::user()->profile,'Administrador') == 0)
+                        <li><a href="{{ route('ordenes') }}">Pedidos</a></li>
+                        <li><a href="{{ route('indexUser') }}">Usuarios</a></li>
+                        <li><a href="{{ route('indexProducto') }}">Productos</a></li>
+                        <li><a href="{{ route('indexRequest') }}">Peticiones</a></li>
+                      @endif
 
-        <!-- Javascript -->
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/retina-1.1.0.min.js"></script>
-        <script src="assets/js/waypoints.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
+                      @if( strcmp(Auth::user()->profile,'Cocinero') == 0)
+                        <li><a href="{{ route('ordenes') }}">Pedidos</a></li>
+                      @endif
+
+                      @if( strcmp(Auth::user()->profile,'Mesero') == 0)
+                        <li>
+                          <a href="{{ route('resumenOrder')}}">Revisar orden
+                           <span class="badge">{{ Session::has('order') ? Session::get('order')->totalCantidad : ''}}</span>
+                          </a>
+                        </li>
+                        <li><a href="{{ route('createOrder') }}">Tomar Pedidos</a></li>
+                        <li><a href="{{ route('ordenes') }}">Estado Pedidos</a></li>
+                      @endif
+
+                    @endif
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a  href="{{ route('logout') }}" 
+                                    onclick="event.preventDefault(); 
+                                            document.getElementById('logout-form').submit();">
+                                    Salir
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="page-header">
+          @include('layouts._errors')
+        @include('layouts._mensages')
+        @yield('content')
+        </div>
+      </div>
         
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
+    </div>
+    
 
-    </body>
 
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    {{ Html::script('bower_components/bootstrap/dist/js/bootstrap.min.js') }}
+    {{ Html::script('assets/js/custom.js') }}
+    
+  
+  </body>
 </html>

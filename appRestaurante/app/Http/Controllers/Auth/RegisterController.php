@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\RequestProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -48,9 +49,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name' => 'required|string|max:150',
+            'lastname' => 'required|string|max:150',
+            'docid' => 'required|string|max:20|unique:users',
+            'username' => 'required|string|max:20|unique:users',
+            'password' => 'required|string|min:8|max:80|confirmed',
+            'email' => 'required|string|email|max:180|unique:users',
+            'profile' => 'required',
         ]);
     }
 
@@ -62,10 +67,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $user = new User;
+        $pin = $user->generarPin();
+        RequestProfile::create([
+            'username'=> $data['username'],
+            'profile' => $data['profile'],
+        ]);
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'lastname' => $data['lastname'],
+            'docid' => $data['docid'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
+            'pin' => $pin,
+            'email' => $data['email'],
         ]);
     }
 }

@@ -22,3 +22,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+https://richos.gitbooks.io/laravel-5/content/capitulos/chapter9.html
+
+$factory->define(App\Customer::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->name,
+        'lastname' => $faker->lastname,
+        'docid' => str_random(10),
+        'pin' => str_random(4),
+        'email' => $faker->unique()->safeEmail,
+    ];
+});

@@ -1,17 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
 @section('content')
-<div class="container">
+    <div class="row">
+        <div class="page-header">
+        </div>
+      </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">Registro usuario</div>
                 <div class="panel-body">
+                
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -24,8 +28,66 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
+                            <label for="lastname" class="col-md-4 control-label">Apellido</label>
+
+                            <div class="col-md-6">
+                                <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" required autofocus>
+
+                                @if ($errors->has('lastname'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('lastname') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('docid') ? ' has-error' : '' }}">
+                            <label for="docid" class="col-md-4 control-label">Documento</label>
+
+                            <div class="col-md-6">
+                                <input id="docid" type="text" class="form-control" name="docid" value="{{ old('docid') }}" required autofocus>
+
+                                @if ($errors->has('docid'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('docid') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label for="username" class="col-md-4 control-label">Username</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('profile') ? ' has-error' : '' }}">
+                            <label for="profile" class="col-md-4 control-label">Perfil</label>
+
+                            <div class="col-md-6">
+                                <select id="profile" type="text" class="form-control" name="profile" value="    {{ old('profile') }}" required autofocus>
+                                    <option value="Mesero">Mesero</option>
+                                    <option value="Cocinero">Cocinero</option>
+                                </select>
+                                @if ($errors->has('profile'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('profile') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -37,7 +99,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
@@ -50,10 +111,10 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div>                        
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Confirmar Password</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -63,7 +124,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Registrarme
                                 </button>
                             </div>
                         </div>
@@ -72,5 +133,5 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection

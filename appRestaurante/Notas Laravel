@@ -1,0 +1,46 @@
+#Notas Laravel
+
+Para llenar las tablas con FACKER
+
+	Entramos a la consola interactiva
+		php artisan tinker
+
+	Luego, ejecutamos el factory(ya deberia estar definido)
+		factory(App\Product::class,10)->create()
+
+......................................................................
+#Modelos
+
+	Para crear un modelo
+		php artisan make:model nombre
+
+......................................................................
+
+#Controladores
+
+	Crear controladores
+		php artisan make:controller PhotoController --resource
+
+
+......................................................................
+
+
+#Migraciones
+
+	para crear las migraciones
+		php artisan make:migration crear_tabla_orderproducts --create=orderproducts
+
+	Para realizar las migraciones
+		php artisan migrate
+
+	La tabla migrations lleva el control de migraciones que ya han sido ejecutadas
+
+	Deshacer la ultima migracion
+		php artisan migrate:rollback
+
+	Deshacer todas las migracion
+		php artisan migrate:reset
+
+
+
+		
